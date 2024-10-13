@@ -2,8 +2,8 @@
 	import { SvelteSimpleMarquee } from 'sveltesimplemarquee';
 	import { SvelteScrollTypewriter } from 'sveltescrolltypewriter';
 	import { SvelteInertiaScroll } from 'svelteinertiascroll';
-	import Intro from './__components/intro/+page.svelte'
- 
+	import Intro from './__components/intro/+page.svelte';
+
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
@@ -13,9 +13,8 @@
 
 	let screenWidth;
 	$: if (screenWidth < 800) {
-		fontSize = 14
-	}
-	else {
+		fontSize = 14;
+	} else {
 		fontSize = 16;
 	}
 
@@ -31,24 +30,19 @@
 		project3 = false;
 
 	let domainHolder;
-  let topOffset = 0; // Initial top value of the domainHolder
+	let topOffset = 0; // Initial top value of the domainHolder
 	//$: domainHolder.style[top] = `${350+topOffset} px;`
 
-  const scrollThreshold = 75; // Change threshold for each scroll step
-  const topChangeValue = 100; // Value to add/subtract from top each time
-
+	const scrollThreshold = 75; // Change threshold for each scroll step
+	const topChangeValue = 100; // Value to add/subtract from top each time
 
 	let fontSize = 16;
 
-
-
 	function scrollFn() {
-
 		let siteMapTop = siteMap.getBoundingClientRect().top;
 		let scrollDistance = scroll - siteMapDistance;
 
 		if (siteMapTop == 0) {
-
 			if (scrollDistance > 75) {
 				topOffset = 1;
 				if (scrollDistance > 150) {
@@ -59,45 +53,24 @@
 
 						if (scrollDistance > 300) {
 							topOffset = 4;
-
-
+						} else {
+							topOffset = 3;
+						}
+					} else {
+						topOffset = 2;
+					}
+				} else {
+					topOffset = 1;
 				}
-
-				else {
-					topOffset = 3;
-
-								
-}
-			} 
-
-			else {
-				topOffset = 2;
-
-								
-}
-			}
-
-			else {
-				topOffset = 1;
-				
-								
-}
-			}
-
-			else {
+			} else {
 				topOffset = 0;
-
-								
-}
+			}
 		}
-    
 	}
-
-
 
 	function calculateDistanceSiteMap() {
 		const element = document.getElementById('siteMap');
-		console.log(element)
+		console.log(element);
 		const rect = element.getBoundingClientRect();
 		siteMapDistance = rect.top + window.pageYOffset;
 	}
@@ -119,14 +92,7 @@
 	on:scroll={scrollFn}
 />
 
-
-
 <body>
-	{#if finished == false}
-		<Intro bind:finished />
-	{/if}
-
-	{#if finished}
 	<div class="nav">
 		<a href="/"><div class="box">Home</div></a>
 		<a href="/contact"><div class="box" id="contact">Contact Me</div></a>
@@ -143,7 +109,7 @@
 			<div class="typewriterHolderHero">
 				<div class="typewriter">
 					<SvelteScrollTypewriter
-						fontSize={fontSize}
+						{fontSize}
 						furthestScrolled={0}
 						auto={true}
 						phrase={'Freelance web developer, Computer science student, UX/UI designer, Back-end developer, Full-stack developer, Computer scientist, Tech enthusiast, SEO specialist, Aspiring software developer, Front-end developer, Javascript/Typescript developer, Python developer, Motivated, Accountable, Creative, Detail oriented, Problem solver.'}
@@ -161,7 +127,7 @@
 				<h2>Who am I?</h2>
 				<div bind:this={typewriter1} id="aboutMeTypewriter" class="typewriter">
 					<SvelteScrollTypewriter
-						fontSize={fontSize}
+						{fontSize}
 						furthestScrolled={scroll + innerh}
 						height={height1}
 						phrase={`Hi! I am Jadd, a freelance web developer. I am from the Wirral, United Kingdom and I am currently in ${data.area}, ${data.region} as of ${data.time}. As a current Computer Science student, I am very enthusiastic in the web development industry and enjoy building cool stuff in my free time`}
@@ -169,91 +135,103 @@
 				</div>
 			</div>
 		</div>
-	
-
-
 
 		<div class="section sectionSitemap" id="siteMap" bind:this={siteMap}>
 			<div class="inner">
 				<h2 id="siteMapHeader">SITE MAP.</h2>
 				<div class="desc">
-					<p>All my projects are all subdomains on this site. Scroll down, and click on any to visit.</p>
-					</div>
-			</div> 
+					<p>
+						All my projects are all subdomains on this site. Scroll down, and click on any to visit.
+					</p>
+				</div>
+			</div>
 
-	
 			<div class="domainHolder" bind:this={domainHolder}>
-
-					<h3 id="domainName" style="position: absolute; top: {(fontSize == 16 ? 50 +  75*topOffset : 75 + 50*topOffset)}px !important;">.JADD.LIVE</h3>
-
+				<h3
+					id="domainName"
+					style="position: absolute; top: {fontSize == 16
+						? 50 + 75 * topOffset
+						: 75 + 50 * topOffset}px !important;"
+				>
+					.JADD.LIVE
+				</h3>
 
 				<div class="subdomainDesc">
 					{#if topOffset == 0}
-					<SvelteScrollTypewriter
-						fontSize={fontSize}
-						auto
-						phrase={`This is my main portfolio site, also the site which we are currently on. This is a showcase of my talents as a full stack developer, whilst also trying to make it look as 'pretty' as possible (I hope I did a decent job).`}
-					/>
-						{:else if topOffset == 1}
 						<SvelteScrollTypewriter
-						fontSize={fontSize}
-						auto
-						phrase={`This is my largest project. It is a text-based social network project where users can post their own content and view other people's content too. Users can follow others, like/comment on posts and also create/vote on vote-type posts.`}
-					/>
+							{fontSize}
+							auto
+							phrase={`This is my main portfolio site, also the site which we are currently on. This is a showcase of my talents as a full stack developer, whilst also trying to make it look as 'pretty' as possible (I hope I did a decent job).`}
+						/>
+					{:else if topOffset == 1}
+						<SvelteScrollTypewriter
+							{fontSize}
+							auto
+							phrase={`This is my largest project. It is a text-based social network project where users can post their own content and view other people's content too. Users can follow others, like/comment on posts and also create/vote on vote-type posts.`}
+						/>
 					{:else if topOffset == 2}
-					<SvelteScrollTypewriter
-						fontSize={fontSize}
-						auto
-						phrase={`This is a small project in which I created a music recommender for myself. Users can key in a song/album name, and upon clicking the title, I am then recommended said music.`}
-					/>
+						<SvelteScrollTypewriter
+							{fontSize}
+							auto
+							phrase={`This is a small project in which I created a music recommender for myself. Users can key in a song/album name, and upon clicking the title, I am then recommended said music.`}
+						/>
 					{:else if topOffset == 3}
 						<SvelteScrollTypewriter
-						fontSize={fontSize}
-						auto
-						phrase={`This is a work-in-progress project where two or more users can find a meeting point where all users are aiming to walk to the same location. This will be cool once complete, trust me.`}
-					/>
+							{fontSize}
+							auto
+							phrase={`This is a work-in-progress project where two or more users can find a meeting point where all users are aiming to walk to the same location. This will be cool once complete, trust me.`}
+						/>
 					{:else if topOffset == 4}
 						<SvelteScrollTypewriter
-						fontSize={fontSize}
-						auto
-						phrase={`This is a small static page where I give people my workout split free of charge, how kind.`}
-					/>
+							{fontSize}
+							auto
+							phrase={`This is a small static page where I give people my workout split free of charge, how kind.`}
+						/>
 					{/if}
 				</div>
 			</div>
 			<div class="subdomainHolder">
 				<a href="https://jadd.live">
-					<div class="subdomain" >
-										<h3>WWW</h3>
-									</div>
+					<div class="subdomain">
+						<h3>WWW</h3>
+					</div>
 				</a>
-				<a href="https://blog.jadd.live"><div class="subdomain">
-					<h3>BLOG</h3>
-				</div></a>
-				<a href="https://music.jadd.live"><div class="subdomain">
-					<h3>MUSIC</h3>
-				</div></a>
-				<a href="https://path.jadd.live"><div class="subdomain">
-					<h3>PATH</h3>
-				</div></a>
-				<a href="https://split.jadd.live"><div class="subdomain">
-					<h3>SPLIT</h3>
-				</div></a>
-				
+				<a href="https://blog.jadd.live"
+					><div class="subdomain">
+						<h3>BLOG</h3>
+					</div></a
+				>
+				<a href="https://music.jadd.live"
+					><div class="subdomain">
+						<h3>MUSIC</h3>
+					</div></a
+				>
+				<a href="https://path.jadd.live"
+					><div class="subdomain">
+						<h3>PATH</h3>
+					</div></a
+				>
+				<a href="https://split.jadd.live"
+					><div class="subdomain">
+						<h3>SPLIT</h3>
+					</div></a
+				>
 			</div>
 
 			<div class="wirralBearsDiv">
-				<p>Another large website I have done is <br/> <a href="https://wirralbears.com" style="color: #4040ff; font-size: 16px;">The Wirral Bears</a>.</p>
+				<p>
+					Another large website I have done is <br />
+					<a href="https://wirralbears.com" style="color: #4040ff; font-size: 16px;"
+						>The Wirral Bears</a
+					>.
+				</p>
 			</div>
 		</div>
-
-
-
 
 		<div class="section" id="activityOuter">
 			<div class="inner" id="activity">
 				<h2>My Activity.</h2>
-				
+
 				<div class="jaddblogHolder">
 					<div class="posts">
 						{#each data.posts as post}
@@ -291,10 +269,7 @@
 		<span class="endName">Jadd Al-Khabbaz</span>
 		<span class="endDate">2024</span>
 	</footer>
-	{/if}
 </body>
-
-
 
 <style>
 	@import '../../static/layoutCSS.css';
@@ -342,9 +317,9 @@
 		-ms-overflow-style: none;
 		scrollbar-width: none;
 	}
-	
+
 	h3 {
-		font-size: 40px  !important;
+		font-size: 40px !important;
 	}
 
 	.desc p {
@@ -394,8 +369,6 @@
 		width: 100vw !important;
 	}
 
-
-
 	.domainHolder {
 		width: 100%;
 		height: 70vh;
@@ -405,7 +378,7 @@
 
 	#siteMap {
 		height: 1700px;
-		
+
 		position: sticky;
 		position: -webkit-sticky !important;
 		top: 0px;
@@ -494,8 +467,6 @@
 		width: 100%;
 		padding: 50px;
 	}
-
-
 
 	#projectsTitle {
 		cursor: pointer;
@@ -611,12 +582,9 @@
 		right: 0;
 	}
 
-
 	#activity {
 		height: 600px;
 	}
-
-
 
 	.siteMapDesc {
 		position: absolute;
@@ -685,8 +653,8 @@
 		font-size: 20px;
 		text-align: start;
 		overflow: clip;
-			white-space: nowrap;
-			text-overflow: ellipsis;
+		white-space: nowrap;
+		text-overflow: ellipsis;
 	}
 
 	.adminHolder span {
@@ -715,15 +683,15 @@
 	}
 
 	.wirralBearsDiv {
-			z-index: 999;
-			position:absolute;
-			top: 550px;
-			left: 100px;
-		}
+		z-index: 999;
+		position: absolute;
+		top: 550px;
+		left: 100px;
+	}
 
-		.wirralBearsDiv p {
-			font-size: 16px;;
-		}
+	.wirralBearsDiv p {
+		font-size: 16px;
+	}
 
 	/* Responsive styles */
 
@@ -775,15 +743,14 @@
 		}
 
 		.siteMapDesc {
-		top: 150px;
-		left: 50px;
-		width: 80vw;
-	}
+			top: 150px;
+			left: 50px;
+			width: 80vw;
+		}
 
 		.subdomainDesc p {
 			font-size: 14px !important;
 		}
-
 
 		.subdomain {
 			height: 50px !important;
@@ -796,7 +763,6 @@
 			width: 80vw;
 		}
 
-
 		.subdomainHolder {
 			left: 50px;
 			top: 175px;
@@ -808,18 +774,14 @@
 
 		.wirralBearsDiv {
 			z-index: 999;
-			position:absolute;
+			position: absolute;
 			top: 650px;
 			left: 50px;
 		}
 
 		.wirralBearsDiv p {
-			font-size: 16px;;
+			font-size: 16px;
 		}
-
-
-
-
 
 		#projects:before {
 			padding: 80vh 70px 10px 5px;
@@ -903,7 +865,7 @@
 		}
 
 		#siteMap {
-		height: 1500px;
+			height: 1500px;
 		}
 	}
 </style>
