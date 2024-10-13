@@ -119,12 +119,18 @@
 	on:scroll={scrollFn}
 />
 
+
+
 <body>
 	{#if finished == false}
 		<Intro bind:finished />
 	{/if}
 
 	{#if finished}
+	<div class="nav">
+		<a href="/"><div class="box">Home</div></a>
+		<a href="/contact"><div class="box" id="contact">Contact Me</div></a>
+	</div>
 	<main>
 		<div class="hero">
 			<div class="marquee">
@@ -273,10 +279,26 @@
 		</div>
 		<div class="end" />
 	</main>
+	<footer>
+		<div class="footerContent">
+			<h6>Hey you...</h6>
+			<div class="button">
+				<a class="contactForm" href="/contact">
+					<span class="innerButton">Contact me</span>
+				</a>
+			</div>
+		</div>
+		<span class="endName">Jadd Al-Khabbaz</span>
+		<span class="endDate">2024</span>
+	</footer>
 	{/if}
 </body>
 
+
+
 <style>
+	@import '../../static/layoutCSS.css';
+
 	:root {
 		--leftPC: 100px;
 		--leftPhone: 50px;
