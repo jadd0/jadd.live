@@ -1,14 +1,17 @@
 <script>
+	export let destination = ''
 	import { onMount } from 'svelte';
 	import mapboxgl from 'mapbox-gl';
 	import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.min.js'; // Adjust the path as per the package structure
 
-	let password = '';
-	let destination = '';
 	let map;
 	let mapContainer;
 	let searchBox;
 	let geocoder;
+
+	let finished = false
+
+
 
 	function initializeMap(lat = 37.7749, lng = -122.4194) {
 		// Default to San Francisco
@@ -32,6 +35,7 @@
 		// Listen for the 'result' event when a user selects a suggestion
 		geocoder.on('result', (e) => {
 			const { center } = e.result.geometry;
+			destination = e.result.place_name;
 			map.setCenter(center);
 		});
 	}
@@ -61,12 +65,6 @@
 		}
 	});
 
-	async function submitRoom() {
-		if (password.length === 0 || destination.length === 0) {
-			return;
-		}
-		// Handle room submission logic here
-	}
 </script>
 
 <svelte:head>
@@ -77,12 +75,15 @@
 	/>
 </svelte:head>
 
-<body>
 	<div class="section">
 		<div id="search-box" bind:this={searchBox} />
 		<div id="map" bind:this={mapContainer} style="width: 400px; height: 400px;" />
+
+		{#if destination.length > 0}
+        <p>Selected address: {destination}</p>
+    {/if}
 	</div>
-</body>
+
 
 
 <style>
