@@ -1,5 +1,7 @@
+"use client"
 import MarqueeBanner from "./marquee-banner";
 import Image from "next/image";
+import Typewriter from "typewriter-effect";
 
 export default function Hero() {
   return (
@@ -15,7 +17,15 @@ export default function Hero() {
           <h1 className="font-normal text-[clamp(2.8rem,7vw,5.5rem)] leading-[1.02] tracking-[-0.02em] text-(--cream) m-0 mt-6">
             <span className="text-(--cream-40)">you're already here.</span>
             <br />
-            so here's the work.
+            <Typewriter
+              options={{
+                strings: ["so here's the work", "so take a look", "have a gander"],
+                autoStart: true,
+                loop: true,
+                delay: 55,
+                deleteSpeed: 20,
+              }}
+            />
           </h1>
 
           <p className="font-light text-[clamp(1.05rem,1.4vw,1.375rem)] leading-[1.6] text-(--cream-90) max-w-[46ch] m-0 mt-7 border-l-2 border-l-(--cream-40) pl-5">
