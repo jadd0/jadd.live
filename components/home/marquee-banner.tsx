@@ -1,49 +1,26 @@
-"use client";
-
 import Marquee from "react-fast-marquee";
 
-const SpiralIcon = () => (
-  <svg
-    width="34"
-    height="34"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="rgba(255,255,255,0.45)"
-    strokeWidth="1.4"
-    style={{ flexShrink: 0 }}
-  >
-    <path d="M12 12a1.6 1.6 0 1 1 1.4 1.6 a3.4 3.4 0 1 1 -4-2.6 a5.6 5.6 0 1 1 8.4 5.8 a8 8 0 1 1 -11-9.6" />
-  </svg>
-);
+function Item() {
+  return (
+    <div className="flex items-center h-[33.33vh]">
+      <span className="text-[24vh] leading-[33.33vh] tracking-[-0.02em] whitespace-nowrap text-white m-0 block">
+        Jadd Al-Khabbaz
+      </span>
+      <span
+        className="text-[24vh] leading-[33.33vh] tracking-[-0.02em] whitespace-nowrap text-white block mx-[0.25em] my-0 select-none"
+        aria-hidden="true"
+      >
+        •
+      </span>
+    </div>
+  );
+}
 
 export default function MarqueeBanner() {
   return (
-    <div
-      style={{
-        width: "100%",
-        background: "var(--espresso)",
-        borderBottom: "1px solid var(--cream-10)",
-        padding: "clamp(18px,2.6vw,34px) 0",
-        overflow: "hidden",
-      }}
-    >
-      <Marquee speed={80} autoFill pauseOnHover>
-        <span
-          style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "clamp(2.4rem,7vw,6rem)",
-            lineHeight: 1,
-            letterSpacing: "-0.02em",
-            color: "var(--cream)",
-            whiteSpace: "nowrap",
-            marginRight: "clamp(28px,4vw,64px)",
-          }}
-        >
-          JADD AL-KHABBAZ
-        </span>
-        <span style={{ marginRight: "clamp(28px,4vw,64px)" }}>
-          <SpiralIcon />
-        </span>
+    <div className="h-[33.33vh] max-w-[100vw]">
+      <Marquee autoFill className="h-full overflow-hidden bg-(--latte)">
+        <Item />
       </Marquee>
     </div>
   );

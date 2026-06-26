@@ -6,8 +6,7 @@ import SiteFooter from "@/components/home/site-footer";
 
 export default function Home() {
   return (
-    <div style={{ width: "100%", background: "var(--oat)", overflow: "hidden" }}>
-      <MarqueeBanner />
+    <div className="flex flex-col flex-1 w-screen">
       <Hero />
       <Work />
       <Contact />
