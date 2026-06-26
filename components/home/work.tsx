@@ -51,6 +51,19 @@ const projects = [
   },
 ];
 
+function VisitCta({ className = "" }: { className?: string }) {
+  return (
+    <a
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`items-center h-[46px] py-0 px-6 font-medium text-xs tracking-wide uppercase text-(--cream) bg-(--espresso) no-underline rounded-sm transition-[background] duration-(--dur-base) ease-(--ease-out) ${className}`}
+    >
+      Visit the site&#160;&#160;&rarr;
+    </a>
+  );
+}
+
 function ProjectArticle({
   project,
   isLast,
@@ -64,7 +77,7 @@ function ProjectArticle({
         className={`flex flex-wrap gap-[clamp(36px,5vw,80px)] items-center pt-[clamp(56px,7vw,104px)] ${isLast ? "pb-0" : "pb-[clamp(56px,7vw,104px)]"}`}
       >
         <div
-          className={`grow shrink basis-[420px] min-w-[300px] ${project.reversed ? "order-2" : "order-1"}`}
+          className={`grow shrink basis-[420px] min-w-[300px] order-2 ${project.reversed ? "lg:order-2" : "lg:order-1"}`}
         >
           <div className="relative">
             {project.image ? (
@@ -95,7 +108,7 @@ function ProjectArticle({
         </div>
 
         <div
-          className={`grow shrink basis-[360px] min-w-[300px] ${project.reversed ? "order-1" : "order-2"}`}
+          className={`grow shrink basis-[360px] min-w-[300px] order-1 ${project.reversed ? "lg:order-1" : "lg:order-2"}`}
         >
           <p className="font-medium text-[0.625rem] tracking-wider uppercase text-(--mocha) m-0 mb-3">
             {project.eyebrow}
@@ -117,14 +130,11 @@ function ProjectArticle({
             </span>
           </div>
 
-          <a
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center h-[46px] py-0 px-6 font-medium text-xs tracking-wide uppercase text-(--cream) bg-(--espresso) no-underline rounded-sm transition-[background] duration-(--dur-base) ease-(--ease-out)"
-          >
-            Visit the site&#160;&#160;&rarr;
-          </a>
+          <VisitCta className="hidden lg:inline-flex" />
+        </div>
+
+        <div className="order-3 w-full flex justify-center lg:hidden">
+          <VisitCta className="inline-flex" />
         </div>
       </article>
 

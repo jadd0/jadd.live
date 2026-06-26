@@ -5,16 +5,16 @@ import Typewriter from "typewriter-effect";
 
 export default function Hero() {
   return (
-    <section className="w-screen h-screen max-h-screen flex flex-col bg-(--latte)">
+    <section className="relative w-screen min-h-screen lg:h-screen lg:max-h-screen flex flex-col bg-(--latte) overflow-hidden">
       <MarqueeBanner />
 
-      <div className="w-full pt-10 flex flex-row items-center justify-center gap-[10vw]">
-        <div className="">
+      <div className="flex-1 w-full px-6 sm:px-10 lg:px-0 pt-7 lg:pt-10 pb-14 lg:pb-0 flex flex-col lg:flex-row items-center justify-center gap-8 sm:gap-10 lg:gap-[10vw]">
+        <div className="w-full max-w-xl lg:w-auto lg:max-w-none">
           <p className="font-medium text-[0.625rem] tracking-wider uppercase text-(--cream-60) m-0">
             Boutique web design&nbsp;&nbsp;·&nbsp;&nbsp;West Kirby, the Wirral
           </p>
 
-          <h1 className="font-normal text-[clamp(2.8rem,7vw,5.5rem)] leading-[1.02] tracking-[-0.02em] text-(--cream) m-0 mt-6">
+          <h1 className="font-normal text-[clamp(2.15rem,8.2vw,5.5rem)] leading-[1.05] lg:leading-[1.02] tracking-[-0.02em] text-(--cream) m-0 mt-4 lg:mt-6">
             <span className="text-(--cream-40)">you're already here.</span>
             <br />
             <Typewriter
@@ -28,7 +28,7 @@ export default function Hero() {
             />
           </h1>
 
-          <p className="font-light text-[clamp(1.05rem,1.4vw,1.375rem)] leading-[1.6] text-(--cream-90) max-w-[46ch] m-0 mt-7 border-l-2 border-l-(--cream-40) pl-5">
+          <p className="font-light text-[clamp(1rem,4vw,1.375rem)] lg:text-[clamp(1.05rem,1.4vw,1.375rem)] leading-[1.55] lg:leading-[1.6] text-(--cream-90) max-w-[46ch] m-0 mt-6 lg:mt-7 border-l-2 border-l-(--cream-40) pl-4 lg:pl-5">
             I design and build boutique, sharp websites for people who'd rather
             see results than read a brochure. No pitch deck, no discovery funnel
             — just a few things I've made, what they were for, and what the
@@ -36,8 +36,8 @@ export default function Hero() {
           </p>
         </div>
 
-        <div className="flex flex-col items-center">
-          <div className="w-[calc(56.67vh-6rem)] aspect-5/4 overflow-hidden border-(--cream-25) rounded-sm">
+        <div className="flex flex-col items-center shrink-0">
+          <div className="w-[min(56vw,15rem)] lg:w-[calc(56.67vh-6rem)] aspect-5/4 overflow-hidden border-(--cream-25) rounded-sm">
             <Image
               src={"/jadd-less-weird-Photoroom(1).jpg"}
               height={1248}
@@ -55,7 +55,7 @@ export default function Hero() {
       {/* Scroll indicator */}
       <a
         href="#work"
-        className="absolute bottom-[clamp(28px,4vw,48px)] left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5 no-underline text-(--cream-40)"
+        className="hidden lg:flex absolute bottom-[clamp(28px,4vw,48px)] left-1/2 -translate-x-1/2 flex-col items-center gap-2.5 no-underline text-(--cream-40)"
       >
         <span className="font-medium text-[0.625rem] tracking-wider uppercase">
           Scroll
