@@ -1,10 +1,17 @@
-import FirstSection from "@/components/home/first-section";
-import Image from "next/image";
+import MarqueeBanner from "@/components/home/marquee-banner";
+import Hero from "@/components/home/hero";
+import Work from "@/components/home/work";
+import Contact from "@/components/home/contact";
+import SiteFooter from "@/components/home/site-footer";
 
 export default function Home() {
   return (
-    <main className="flex flex-col flex-1 items-center bg-[#141414] font-sans">
-      <FirstSection />
-    </main>
+    <div style={{ width: "100%", background: "var(--oat)", overflow: "hidden" }}>
+      <MarqueeBanner />
+      <Hero />
+      <Work />
+      <Contact />
+      <SiteFooter />
+    </div>
   );
 }
