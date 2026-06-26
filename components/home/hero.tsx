@@ -3,11 +3,11 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative h-screen max-h-screen flex flex-col items-center bg-(--latte)">
+    <section className="w-screen h-screen max-h-screen flex flex-col bg-(--latte)">
       <MarqueeBanner />
 
-      <div className="max-w-7xl my-0 mx-auto w-full flex flex-wrap items-end gap-[clamp(40px,6vw,80px)]">
-        <div className="grow shrink basis-115 min-w-0">
+      <div className="w-full pt-10 flex flex-row items-center justify-center gap-[10vw]">
+        <div className="">
           <p className="font-medium text-[0.625rem] tracking-wider uppercase text-(--cream-60) m-0">
             Boutique web design&nbsp;&nbsp;·&nbsp;&nbsp;West Kirby, the Wirral
           </p>
@@ -26,25 +26,19 @@ export default function Hero() {
           </p>
         </div>
 
-        <div className="grow-0 shrink basis-75 min-w-60">
-          <div className="rotate-[-2.2deg]">
-            <div className="absolute top-40 right-60 w-35 rotate-[15.2deg]">
-              <Image src={"/arrow.jpg"} width={1254} height={1254} alt="An arrow pointing towards a portrait"/>
-            </div>
-            <div className="w-full aspect-4/5 block border-(--cream-25) rounded-sm ">
-              <Image
-                src={"/jadd-less-weird-Photoroom.jpg"}
-                height={1448}
-                width={1086}
-                alt="Portrait of Jadd"
-              />
-            </div>
+        <div className="flex flex-col items-center">
+          <div className="w-[calc(56.67vh-6rem)] aspect-5/4 overflow-hidden border-(--cream-25) rounded-sm">
+            <Image
+              src={"/jadd-less-weird-Photoroom(1).jpg"}
+              height={1248}
+              width={1700}
+              alt="Portrait of Jadd"
+              className="w-full h-full object-cover block"
+            />
           </div>
-          <div className="mt-[18px] text-center">
-            <p className="font-medium text-[0.625rem] tracking-wider uppercase text-(--cream-40) m-0">
-              Jadd Al-Khabbaz, drawn (obviously)
-            </p>
-          </div>
+          <p className="mt-3 font-medium text-[0.625rem] tracking-wider uppercase text-(--cream-40) m-0 text-center">
+            Jadd Al-Khabbaz, drawn (obviously)
+          </p>
         </div>
       </div>
 
