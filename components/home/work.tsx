@@ -1,39 +1,53 @@
+import Image from "next/image";
+
 const LDQUO = "“";
 const RDQUO = "”";
 
 const projects = [
   {
-    id: "proj-northshore",
-    eyebrow: "01 · Ecommerce · 2025",
-    title: "Northshore Coffee Roasters",
+    id: "proj-crowhockey",
+    eyebrow: "01 · Ecommerce · 2026",
+    title: "Crow Hockey.",
     description:
-      "A storefront for a Wirral roaster who was tired of paying Shopify to slow his site down. Built lean, loads instantly, sells beans without getting in the way.",
+      "A rebuilt storefront for a community-based hockey shop. Built lean, loads instantly, sells sticks without getting in the way.",
     quote:
-      LDQUO + "Online sales nearly doubled the first month, and I haven't had to touch it since. He just got what I wanted." + RDQUO,
-    attribution: "Dan M. — Owner, Northshore Roasters",
+      LDQUO +
+      "Online sales nearly doubled the first month, and I haven't had to touch it since. He just got what I wanted." +
+      RDQUO,
+    attribution: "Jay P. — Owner, Crow Hockey",
+    image: "/crow-hockey-screenshot.png",
     reversed: false,
+    shadow: "black",
   },
   {
-    id: "proj-studio12",
-    eyebrow: "02 · Landing page · 2025",
-    title: "Studio Twelve",
+    id: "proj-littleeye",
+    eyebrow: "02 · Landing page · 2026",
+    title: "Little Eye Coffee.",
     description:
-      "A single page for a fitness studio in Hoylake with exactly one job: turn a click into a booked trial class. Everything that didn't serve that job got cut.",
+      "A landing page for a unique coffee shop in West Kirby with exactly one job: match the brand aesthetic. Everything that didn't serve that job got cut.",
     quote:
-      LDQUO + "Trial bookings went up the week it went live. Clean, fast, and he didn't try to sell me things I didn't need." + RDQUO,
-    attribution: "Priya K. — Founder, Studio Twelve",
+      LDQUO +
+      "Walk-ins went up the week it went live. Clean, fast, and he didn't try to sell me things I didn't need." +
+      RDQUO,
+    attribution: "Person K. — Owner, Little Eye Coffee",
+    image: "/little-eye-screenshot.png",
     reversed: true,
+    shadow: "",
   },
   {
-    id: "proj-marsh",
-    eyebrow: "03 · Product site · 2024",
-    title: "Marsh & Co.",
+    id: "proj-dalamanairporttransfers",
+    eyebrow: "03 · Service site · 2026",
+    title: "24/7 Dalaman Airport Transfers.",
     description:
-      "A product site for a small homeware brand launching their first collection. Quiet, editorial, and built so they could add products themselves without calling me every week.",
+      "A service site for an airports tranfers company in Dalaman, Turkey. Built to convert, with both Turkish and English translations.",
     quote:
-      LDQUO + "It looks like a brand ten times our size. Customers mention the site constantly — that never happened before." + RDQUO,
-    attribution: "Sophie & Tom — Marsh & Co.",
+      LDQUO +
+      "It looks like a brand ten times our size. Customers mention the site constantly — that never happened before." +
+      RDQUO,
+    attribution: "Mert D. — 24/7 Dalaman Airport Transfers",
+    image: "/247dalamanairporttransfers-screenshot.png",
     reversed: false,
+    shadow: "",
   },
 ];
 
@@ -52,8 +66,31 @@ function ProjectArticle({
         <div
           className={`grow shrink basis-[420px] min-w-[300px] ${project.reversed ? "order-2" : "order-1"}`}
         >
-          <div className="shadow-[var(--shadow-card)] border border-(--espresso-15) rounded-sm">
-            <div className="w-full aspect-[16/10] block bg-(--latte-soft) rounded-sm" />
+          <div className="relative">
+            {project.image ? (
+              <>
+                <div className="absolute inset-[-12px] blur-3xl opacity-100 pointer-events-none rounded-sm overflow-hidden">
+                  <Image
+                    src={project.image}
+                    width={1905}
+                    height={937}
+                    alt=""
+                    className="w-full block"
+                  />
+                </div>
+                <div className="relative rounded-sm overflow-hidden">
+                  <Image
+                    src={project.image}
+                    width={1905}
+                    height={937}
+                    alt={project.title}
+                    className="w-full block"
+                  />
+                </div>
+              </>
+            ) : (
+              <div className="w-full aspect-16/10 bg-(--latte-soft) animate-pulse rounded-sm" />
+            )}
           </div>
         </div>
 
@@ -107,11 +144,15 @@ export default function Work() {
       <div className="max-w-7xl mx-auto">
         <div className="max-w-[760px] mb-[clamp(48px,6vw,88px)]">
           <p className="font-medium text-[0.625rem] tracking-wider uppercase text-(--mocha) m-0 mb-[14px]">
-            Selected work &#183; 2024&#8211;2025
+            Selected work &#183; 2026
           </p>
           <h2 className="font-normal text-[clamp(2.2rem,5vw,4rem)] leading-[1.05] tracking-[-0.02em] text-(--espresso) m-0">
-            <span className="text-(--espresso-40)">Three projects.</span>{" "}
-            Real briefs, honest feedback.
+            <span className="text-(--espresso-40)">Three projects.</span> Real
+            briefs, honest feedback.
+            <span className="text-(--espresso-40)">
+              <br />
+              (It's always positive)
+            </span>
           </h2>
         </div>
 
