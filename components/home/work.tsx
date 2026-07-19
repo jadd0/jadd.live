@@ -9,7 +9,7 @@ const projects = [
     eyebrow: "01 · Ecommerce · 2026",
     title: "Crow Hockey.",
     description:
-      "A rebuilt storefront for a community-based hockey shop. Built lean, loads instantly, sells sticks without getting in the way.",
+      "A rebuilt storefront for a community-based hockey shop, originally WooCommerce. Built lean, loads instantly, sells sticks without getting in the way.",
     quote:
       LDQUO +
       "Online sales nearly doubled the first month, and I haven't had to touch it since. He just got what I wanted." +
@@ -18,36 +18,55 @@ const projects = [
     image: "/crow-hockey-screenshot.png",
     reversed: false,
     shadow: "black",
+    complete: false,
   },
+  // {
+  //   id: "proj-littleeye",
+  //   eyebrow: "02 · Landing page · 2026",
+  //   title: "Little Eye Coffee.",
+  //   description:
+  //     "A landing page for a unique coffee shop in West Kirby with exactly one job: match the brand aesthetic. Everything that didn't serve that job got cut.",
+  //   quote:
+  //     LDQUO +
+  //     "Walk-ins went up the week it went live. Clean, fast, and he didn't try to sell me things I didn't need." +
+  //     RDQUO,
+  //   attribution: "Person K. — Owner, Little Eye Coffee",
+  //   image: "/little-eye-screenshot.png",
+  //   reversed: true,
+  //   shadow: "",
+  //   complete: true
+  // },
   {
-    id: "proj-littleeye",
-    eyebrow: "02 · Landing page · 2026",
-    title: "Little Eye Coffee.",
+    id: "proj-jdbgardeningservices",
+    eyebrow: "02 · Business landing page · 2026",
+    title: "JDB Gardening Services.",
     description:
-      "A landing page for a unique coffee shop in West Kirby with exactly one job: match the brand aesthetic. Everything that didn't serve that job got cut.",
+      "A landing page for a gardening service company. Built to convert, with a focus on showcasing services and a clear contact form.",
     quote:
       LDQUO +
-      "Walk-ins went up the week it went live. Clean, fast, and he didn't try to sell me things I didn't need." +
+      "He just got what I wanted. I gave him an idea, and he cracked on with it and delivered." +
       RDQUO,
-    attribution: "Person K. — Owner, Little Eye Coffee",
-    image: "/little-eye-screenshot.png",
-    reversed: true,
-    shadow: "",
-  },
-  {
-    id: "proj-dalamanairporttransfers",
-    eyebrow: "03 · Service site · 2026",
-    title: "24/7 Dalaman Airport Transfers.",
-    description:
-      "A service site for an airports tranfers company in Dalaman, Turkey. Built to convert, with both Turkish and English translations.",
-    quote:
-      LDQUO +
-      "It looks like a brand ten times our size. Customers mention the site constantly — that never happened before." +
-      RDQUO,
-    attribution: "Mert D. — 24/7 Dalaman Airport Transfers",
-    image: "/247dalamanairporttransfers-screenshot.png",
+    attribution: "Joe B. — JDB Gardening Services",
+    image: "/jdbgardeningservices-screenshot.png",
     reversed: false,
     shadow: "",
+    complete: true,
+  },
+  {
+    id: "proj-gigplan",
+    eyebrow: "03 · Booking management app · 2026",
+    title: "GigPlan.",
+    description:
+      "A booking management app for venues looking to streamline their onboarding process. Built to improve user experience and efficiency.",
+    quote:
+      LDQUO +
+      "Strong landing page and user experience, built with venues and performers in mind. Scaled well and have happy customers. Built with Next.js." +
+      RDQUO,
+    attribution: "Jadd A. — Technical Founder, GigPlan",
+    image: "/gigplan-screenshot.png",
+    reversed: false,
+    shadow: "",
+    complete: true,
   },
 ];
 
@@ -116,6 +135,13 @@ function ProjectArticle({
           <h2 className="font-normal text-[clamp(1.8rem,3vw,2.5rem)] leading-[1.1] tracking-[-0.01em] text-(--espresso) m-0">
             {project.title}
           </h2>
+          {project.complete ? (
+            <></>
+          ) : (
+            <span className="block mt-[6px] font-medium text-[0.625rem] tracking-wider uppercase text-(--mocha)">
+              (In progress)
+            </span>
+          )}
 
           <p className="font-light text-lg leading-[1.6] text-(--espresso-60) mt-[18px] mb-7 max-w-[46ch]">
             {project.description}
