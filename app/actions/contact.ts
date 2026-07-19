@@ -61,14 +61,18 @@ export async function submitContact(
 
   const { name, email, message } = parsed.data
 
+  console.log('Sending contact email from', email, 'with name', name, "contact emaikl is", process.env.CONTACT_EMAIL)
+
   // 5. Send email
   const { error: sendError } = await resend.emails.send({
-    from: 'Contact Form <onboarding@resend.dev>',
+    from: 'Contact Form <' + process.env.EMAIL_FROM + '>',
     to: process.env.CONTACT_EMAIL!,
     replyTo: email,
     subject: `New message from ${name}`,
     text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
   })
+
+  console.log('Email send error:', sendError)
 
   if (sendError) {
     return { success: false, error: 'Failed to send message. Please try again.' }

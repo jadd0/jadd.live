@@ -6,6 +6,6 @@ export const contactRatelimit = new Ratelimit({
     url: process.env.UPSTASH_REDIS_REST_URL!,
     token: process.env.UPSTASH_REDIS_REST_TOKEN!,
   }),
-  limiter: Ratelimit.slidingWindow(2, '3 m'),
+  limiter: Ratelimit.slidingWindow(2, '1 m'),
   prefix: 'contact',
 })

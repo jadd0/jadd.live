@@ -11,15 +11,6 @@ export async function POST(req: Request) {
   // svix verification needs the raw body string, so read text() not json().
   const body = await req.text();
 
-  console.log(
-    "Received webhook payload:",
-    body,
-    "from",
-    req.headers.get("svix-id"),
-    "forwarding to",
-    FORWARD_TO,
-  );
-
   let event;
   try {
     event = resend.webhooks.verify({
@@ -46,12 +37,10 @@ export async function POST(req: Request) {
   const { data: full, error } = await resend.emails.receiving.get(
     event.data.email_id,
   );
-  console.log("Fetched full email data:", full, "error:", error);
+
   if (error || !full) {
     return new Response("fetch failed", { status: 502 });
   }
-
-  console.log("Forwarding email from", event.data.from, "to", FORWARD_TO);
 
   const { data: sent, error: sendError } = await resend.emails.send({
     from: FROM,
@@ -61,7 +50,7 @@ export async function POST(req: Request) {
     html: full.html ?? undefined,
     text: full.text ?? "",
   });
-  console.log("Send result:", sent, "sendError:", sendError);
+
   if (sendError) return new Response("send failed", { status: 502 });
 
   return new Response("ok");
