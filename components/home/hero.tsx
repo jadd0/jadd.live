@@ -8,7 +8,7 @@ export default function Hero() {
     <section className="relative w-screen min-h-screen lg:h-screen lg:max-h-screen flex flex-col bg-(--latte) overflow-hidden">
       <MarqueeBanner />
 
-      <div className="flex-1 w-full px-6 sm:px-10 lg:px-0 pt-7 lg:pt-10 pb-14 lg:pb-0 [@media(min-width:1024px)_and_(max-height:720px)]:pt-4 flex flex-col lg:flex-row items-center justify-center gap-8 sm:gap-10 lg:gap-[10vw] [@media(min-width:1024px)_and_(max-height:720px)]:gap-[6vw]">
+      <div className="flex-1 w-full px-6 sm:px-10 lg:px-0 pt-7 lg:pt-0 pb-14 lg:pb-0 [@media(min-width:1024px)_and_(max-height:720px)]:pt-4 flex flex-col lg:flex-row items-center justify-center gap-8 sm:gap-10 lg:gap-[10vw] [@media(min-width:1024px)_and_(max-height:720px)]:gap-[6vw]">
         <div className="w-full max-w-xl lg:w-auto lg:max-w-none">
           <p className="font-medium text-[0.625rem] tracking-wider uppercase text-(--cream-60) m-0">
             Boutique web design&nbsp;&nbsp;·&nbsp;&nbsp;West Kirby, the Wirral
@@ -53,7 +53,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator — absolute on desktop, in-flow centered on mobile */}
-      <a
+      {/* <a
         href="#work"
         className="flex lg:absolute lg:bottom-[clamp(28px,4vw,48px)] lg:left-1/2 lg:-translate-x-1/2 flex-col items-center gap-2.5 no-underline text-(--cream-40) pb-8 lg:pb-0"
       >
@@ -73,7 +73,7 @@ export default function Hero() {
         >
           <path d="M9 3v12M3 9l6 6 6-6" />
         </svg>
-      </a>
+      </a> */}
     </section>
   );
 }

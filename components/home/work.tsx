@@ -19,6 +19,7 @@ const projects = [
     reversed: false,
     shadow: "black",
     complete: false,
+    link: "https://jaypatel-chi.vercel.app/",
   },
   // {
   //   id: "proj-littleeye",
@@ -51,6 +52,7 @@ const projects = [
     reversed: false,
     shadow: "",
     complete: true,
+    link: "https://jdbgardeningservices.com/",
   },
   {
     id: "proj-gigplan",
@@ -67,13 +69,14 @@ const projects = [
     reversed: false,
     shadow: "",
     complete: true,
+    link: "https://gigplan.co.uk/",
   },
 ];
 
-function VisitCta({ className = "" }: { className?: string }) {
+function VisitCta({ className = "", link }: { className?: string; link: string }) {
   return (
     <a
-      href="#"
+      href={link}
       target="_blank"
       rel="noopener noreferrer"
       className={`items-center h-[46px] py-0 px-6 font-medium text-xs tracking-wide uppercase text-(--cream) bg-(--espresso) no-underline rounded-sm transition-[background] duration-(--dur-base) ease-(--ease-out) ${className}`}
@@ -156,11 +159,11 @@ function ProjectArticle({
             </span>
           </div>
 
-          <VisitCta className="hidden lg:inline-flex" />
+          <VisitCta className="hidden lg:inline-flex" link={project.link} />
         </div>
 
         <div className="order-3 w-full flex justify-center lg:hidden">
-          <VisitCta className="inline-flex" />
+          <VisitCta className="inline-flex" link={project.link} />
         </div>
       </article>
 
