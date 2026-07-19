@@ -11,6 +11,8 @@ export async function POST(req: Request) {
   // svix verification needs the raw body string, so read text() not json().
   const body = await req.text();
 
+  console.log("Received webhook payload:", body, "from", req.headers.get('svix-id'), "forwarding to", FORWARD_TO);
+
   let event;
   try {
     event = resend.webhooks.verify({
@@ -24,6 +26,7 @@ export async function POST(req: Request) {
       webhookSecret: process.env.RESEND_WEBHOOK_SECRET!,
     });
   } catch {
+    console.log("invalid signature")
     return new Response('invalid signature', { status: 400 });
   }
 
@@ -34,9 +37,12 @@ export async function POST(req: Request) {
 
   // The webhook payload is metadata only; the body must be fetched separately.
   const { data: full, error } = await resend.emails.receiving.get(event.data.email_id);
+  console.log("Fetched full email data:", full, "error:", error);
   if (error || !full) {
     return new Response('fetch failed', { status: 502 });
   }
+
+  console.log("Forwarding email from", event.data.from, "to", FORWARD_TO);
 
   await resend.emails.send({
     from: FROM,
