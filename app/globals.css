@@ -14,6 +14,14 @@
   font-display: swap;
 }
 
+/* Thornton Hough Village Club's wordmark face, for its mark in the past-work strip only */
+@font-face {
+  font-family: "Libre Caslon Condensed";
+  src: url("/fonts/LibreCaslonCondensed-Regular.woff") format("woff");
+  font-weight: 400;
+  font-display: swap;
+}
+
 /* ============================================================
    Little Eye Coffee — Design System Tokens
    ============================================================ */
@@ -45,6 +53,7 @@
   /* Typography */
   --font-display: "Circular", system-ui, sans-serif;
   --font-body:    "Circular", system-ui, sans-serif;
+  --font-thvc:    "Libre Caslon Condensed", Georgia, serif;
 
   --text-xl:   1.375rem;
   --text-lg:   1.125rem;

@@ -11,7 +11,7 @@ export default function Hero() {
       <div className="flex-1 w-full px-6 sm:px-10 lg:px-0 pt-7 lg:pt-0 pb-14 lg:pb-0 [@media(min-width:1024px)_and_(max-height:720px)]:pt-4 flex flex-col lg:flex-row items-center justify-center gap-8 sm:gap-10 lg:gap-[10vw] [@media(min-width:1024px)_and_(max-height:720px)]:gap-[6vw]">
         <div className="w-full max-w-xl lg:w-auto lg:max-w-none">
           <p className="font-medium text-[0.625rem] tracking-wider uppercase text-(--cream-60) m-0">
-            Boutique web design&nbsp;&nbsp;·&nbsp;&nbsp;West Kirby, the Wirral
+            Boutique web design &amp; marketing&nbsp;&nbsp;·&nbsp;&nbsp;West Kirby, the Wirral
           </p>
 
           <h1 className="font-normal text-[clamp(2.15rem,8.2vw,5.5rem)] [@media(min-width:1024px)_and_(max-height:720px)]:text-[clamp(2.2rem,7.5vh,3.2rem)] leading-[1.05] lg:leading-[1.02] tracking-[-0.02em] text-(--cream) m-0 mt-4 lg:mt-6 [@media(min-width:1024px)_and_(max-height:720px)]:mt-3">
@@ -30,9 +30,9 @@ export default function Hero() {
 
           <p className="font-light text-[clamp(1rem,4vw,1.375rem)] lg:text-[clamp(1.05rem,1.4vw,1.375rem)] [@media(min-width:1024px)_and_(max-height:720px)]:text-[1rem] leading-[1.55] lg:leading-[1.6] [@media(min-width:1024px)_and_(max-height:720px)]:leading-[1.45] text-(--cream-90) max-w-[46ch] m-0 mt-6 lg:mt-7 [@media(min-width:1024px)_and_(max-height:720px)]:mt-4 border-l-2 border-l-(--cream-40) pl-4 lg:pl-5">
             I design and build boutique, sharp websites for people who'd rather
-            see results than read a brochure. No pitch deck, no discovery funnel
-            — just a few things I've made, what they were for, and what the
-            people who paid for them actually said.
+            see results than read a brochure — and run the marketing that
+            sends people to them. No pitch deck, no discovery funnel, just a
+            few things I've made and what they were for.
           </p>
         </div>
 

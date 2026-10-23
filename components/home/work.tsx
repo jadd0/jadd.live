@@ -1,75 +1,57 @@
 import Image from "next/image";
+import PastWork from "@/components/home/past-work";
 
-const LDQUO = "“";
-const RDQUO = "”";
+type Project = {
+  id: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  /** A client review, once one lands. Without it the article shows the description alone. */
+  quote?: string;
+  attribution?: string;
+  image: string;
+  reversed: boolean;
+  shadow: string;
+  complete: boolean;
+  link: string;
+};
 
-const projects = [
+const projects: Project[] = [
   {
-    id: "proj-crowhockey",
-    eyebrow: "01 · Ecommerce · 2026",
-    title: "Crow Hockey.",
+    id: "proj-kanti",
+    eyebrow: "01 · Ecommerce + marketing · 2026",
+    title: "Kanti Skincare.",
     description:
-      "A rebuilt storefront for a community-based hockey shop, originally WooCommerce. Built lean, loads instantly, sells sticks without getting in the way.",
-    quote:
-      LDQUO +
-      "Online sales nearly doubled the first month, and I haven't had to touch it since. He just got what I wanted." +
-      RDQUO,
-    attribution: "Jay P. — Owner, Crow Hockey",
-    image: "/crow-hockey-screenshot.png",
-    reversed: false,
-    shadow: "black",
-    complete: false,
-    link: "https://jaypatel-chi.vercel.app/",
-  },
-  // {
-  //   id: "proj-littleeye",
-  //   eyebrow: "02 · Landing page · 2026",
-  //   title: "Little Eye Coffee.",
-  //   description:
-  //     "A landing page for a unique coffee shop in West Kirby with exactly one job: match the brand aesthetic. Everything that didn't serve that job got cut.",
-  //   quote:
-  //     LDQUO +
-  //     "Walk-ins went up the week it went live. Clean, fast, and he didn't try to sell me things I didn't need." +
-  //     RDQUO,
-  //   attribution: "Person K. — Owner, Little Eye Coffee",
-  //   image: "/little-eye-screenshot.png",
-  //   reversed: true,
-  //   shadow: "",
-  //   complete: true
-  // },
-  {
-    id: "proj-jdbgardeningservices",
-    eyebrow: "02 · Business landing page · 2026",
-    title: "JDB Gardening Services.",
-    description:
-      "A landing page for a gardening service company. Built to convert, with a focus on showcasing services and a clear contact form.",
-    quote:
-      LDQUO +
-      "He just got what I wanted. I gave him an idea, and he cracked on with it and delivered." +
-      RDQUO,
-    attribution: "Joe B. — JDB Gardening Services",
-    image: "/jdbgardeningservices-screenshot.png",
+      "A storefront for a small, family-run skincare brand built on traceable Madagascar botanicals — shop, accounts and returns, all quiet enough to let the product lead. I run their Instagram too, so every post looks like the site it points to.",
+    image: "/kanti-screenshot.png",
     reversed: false,
     shadow: "",
     complete: true,
-    link: "https://jdbgardeningservices.com/",
+    link: "https://www.kantiskincare.com",
   },
   {
-    id: "proj-gigplan",
-    eyebrow: "03 · Booking management app · 2026",
-    title: "GigPlan.",
+    id: "proj-thvc",
+    eyebrow: "02 · Venue website · 2026",
+    title: "Thornton Hough Village Club.",
     description:
-      "A booking management app for venues looking to streamline their onboarding process. Built to improve user experience and efficiency.",
-    quote:
-      LDQUO +
-      "Strong landing page and user experience, built with venues and performers in mind. Scaled well and have happy customers. Built with Next.js." +
-      RDQUO,
-    attribution: "Jadd A. — Technical Founder, GigPlan",
-    image: "/gigplan-screenshot.png",
+      "A listening room on the Wirral, open since 1904. Gig listings, tickets, a gallery and how to find the place — built to feel like walking in on a night when the music's already started.",
+    image: "/thvc-screenshot.png",
     reversed: false,
     shadow: "",
     complete: true,
-    link: "https://gigplan.co.uk/",
+    link: "https://www.thorntonhoughvillageclub.com",
+  },
+  {
+    id: "proj-umbo",
+    eyebrow: "03 · SaaS product · 2026",
+    title: "umbo.",
+    description:
+      "My own product. umbo connects the bookings, till and bank a business already runs on, and shows what came in, what went out and what was kept. Designed, built and run end to end.",
+    image: "/umbo-screenshot.png",
+    reversed: false,
+    shadow: "",
+    complete: true,
+    link: "https://www.umbo.uk",
   },
 ];
 
@@ -90,7 +72,7 @@ function ProjectArticle({
   project,
   isLast,
 }: {
-  project: (typeof projects)[0];
+  project: Project;
   isLast: boolean;
 }) {
   return (
@@ -150,14 +132,16 @@ function ProjectArticle({
             {project.description}
           </p>
 
-          <div className="border-l-2 border-l-(--latte-deep) pl-[22px] mb-[30px]">
-            <p className="font-normal text-[clamp(1.25rem,1.8vw,1.55rem)] leading-[1.35] tracking-[-0.01em] text-(--espresso) m-0">
-              {project.quote}
-            </p>
-            <span className="block mt-[14px] font-medium text-[0.625rem] tracking-wider uppercase text-(--mocha)">
-              {project.attribution}
-            </span>
-          </div>
+          {project.quote && (
+            <div className="border-l-2 border-l-(--latte-deep) pl-[22px] mb-[30px]">
+              <p className="font-normal text-[clamp(1.25rem,1.8vw,1.55rem)] leading-[1.35] tracking-[-0.01em] text-(--espresso) m-0">
+                {project.quote}
+              </p>
+              <span className="block mt-[14px] font-medium text-[0.625rem] tracking-wider uppercase text-(--mocha)">
+                {project.attribution}
+              </span>
+            </div>
+          )}
 
           <VisitCta className="hidden lg:inline-flex" link={project.link} />
         </div>
@@ -180,17 +164,19 @@ export default function Work() {
       id="work"
       className="bg-(--oat) py-[clamp(72px,10vw,140px)] px-[clamp(24px,6vw,96px)]"
     >
+      <PastWork />
+
       <div className="max-w-7xl mx-auto">
         <div className="max-w-[760px] mb-[clamp(48px,6vw,88px)]">
           <p className="font-medium text-[0.625rem] tracking-wider uppercase text-(--mocha) m-0 mb-[14px]">
             Selected work &#183; 2026
           </p>
           <h2 className="font-normal text-[clamp(2.2rem,5vw,4rem)] leading-[1.05] tracking-[-0.02em] text-(--espresso) m-0">
-            <span className="text-(--espresso-40)">Three projects.</span> Real
-            briefs, honest feedback.
+            <span className="text-(--espresso-40)">Three recent projects.</span>{" "}
+            Real briefs, live sites.
             <span className="text-(--espresso-40)">
               <br />
-              (It's always positive)
+              (Reviews on their way)
             </span>
           </h2>
         </div>

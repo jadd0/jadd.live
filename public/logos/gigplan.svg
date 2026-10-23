@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="GigPlan">
+  <title>GigPlan</title>
+  <rect width="512" height="512" rx="115" fill="#1F4A38"/>
+  <rect x="128" y="138" width="198" height="44" rx="22" fill="#E7DEC9"/>
+  <rect x="128" y="234" width="268" height="44" rx="22" fill="#B5842B"/>
+  <rect x="128" y="330" width="198" height="44" rx="22" fill="#E7DEC9"/>
+</svg>
