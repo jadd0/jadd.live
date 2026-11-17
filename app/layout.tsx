@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { LenisProvider } from "@/providers/lenis-provider";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Jadd Al-Khabbaz — Boutique Web Design",
@@ -17,6 +18,7 @@ export default function RootLayout({
     <html lang="en" className="min-h-full flex flex-col overflow-x-hidden">
       <body>
         <LenisProvider>{children}</LenisProvider>
+        <Analytics />
       </body>
     </html>
   );
